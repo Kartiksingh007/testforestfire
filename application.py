@@ -25,8 +25,9 @@ def predict_datapoint():
             DMC = float(request.form.get('DMC'))
             ISI = float(request.form.get('ISI'))
             Classes = float(request.form.get('Classes'))
+            region = float (request.form.get('region'))
 
-            final_input = np.array([[Temperature, RH, Ws, Rain, FFMC, DMC, ISI, Classes]])
+            final_input = np.array([[Temperature, RH, Ws, Rain, FFMC, DMC, ISI, Classes,region]])
 
             scaled_input = standard_scaler.transform(final_input)
 

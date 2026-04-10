@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FWI Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+        }
+
+        input {
+            margin: 5px;
+            padding: 10px;
+            width: 220px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1> FWI Prediction</h1>
+
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <input type="text" name="Temperature" placeholder="Temperature" required><br>
+        <input type="text" name="RH" placeholder="RH" required><br>
+        <input type="text" name="Ws" placeholder="Ws" required><br>
+        <input type="text" name="Rain" placeholder="Rain" required><br>
+        <input type="text" name="FFMC" placeholder="FFMC" required><br>
+        <input type="text" name="DMC" placeholder="DMC" required><br>
+        <input type="text" name="ISI" placeholder="ISI" required><br>
+        <input type="text" name="Classes" placeholder="Classes" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+        <h2>Prediction: {{ result }}</h2>
+    {% endif %}
+</div>
+
+</body>
+</html>
